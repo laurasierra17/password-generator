@@ -101,6 +101,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-// make sure non-numeric characters aren't inputted
-// fix comments
