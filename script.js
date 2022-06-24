@@ -9,14 +9,12 @@ function getCharacterTypes() {
   var hasNumeric = confirm("Would you like your password to include numbers?");
   var hasSpecialChars = confirm("Would you like your password to include special characters? Example: !-./:;<=>?@[\]^_`{|}~");
 
-
   return {
     lowercase: hasLowercase,
-    upprcase: hasUppercase,
+    uppercase: hasUppercase,
     numeric: hasNumeric,
     specialChars: hasSpecialChars
   }
-  
 }
 
 // Prompts user to select length and character types for their new password
@@ -41,14 +39,43 @@ function getUserPasswordCriteria() {
 
 // Function to generate password based on user selections
 function generatePassword() {
-  var newPassword = getUserPasswordCriteria();
-  var passLength = newPassword[0]; // number
-  var charTypes = newPassword[1]; // object
+  var passCriteriaList = getUserPasswordCriteria();
+  var passLength = passCriteriaList[0]; // number
+  var charTypes = passCriteriaList[1]; // object
+  // reset passCriteriaList to store chars that will go towards the new password
+  passCriteriaList = "";
+
+  // count how many chars type the user selected
+  var countTrue = 0;
+  for (const property in charTypes) {
+    if (charTypes[property] === true) countTrue++;
+  }
 
   var lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
   var uppercaseChars = lowercaseChars.toUpperCase();
   var digits = "0123456789";
-  var specialChars = ["!", "\"", "#", "$", "%", "&", "\'", "(", ")", "*", "+", ",", ""];
+  var listSpecialChars = "!#%&^@()*$";
+
+  // Generate a password which includes a quantity of every character type selected by the user.
+  // This quantity is the requested password length divided by the number of character types selected.
+  for (var i = 0; i < passLength / countTrue; i++) {
+    if (charTypes.lowercase) {
+      var randomNumber = Math.floor(Math.random() * lowercaseChars.length);
+      passCriteriaList += lowercaseChars.substring(randomNumber, randomNumber + 1);
+    }
+    if (charTypes.uppercase) {
+      var randomNumber = Math.floor(Math.random() * uppercaseChars.length);
+      passCriteriaList += uppercaseChars.substring(randomNumber, randomNumber + 1);
+    }
+    if (charTypes.numeric) {
+      var randomNumber = Math.floor(Math.random() * digits.length);
+      passCriteriaList += digits.substring(randomNumber, randomNumber + 1);
+    }
+    if (charTypes.specialChars) {
+      var randomNumber = Math.floor(Math.random() * listSpecialChars.length);
+      passCriteriaList += listSpecialChars.substring(randomNumber, randomNumber + 1);
+    }
+  }
 
 
   return newPassword;
@@ -65,13 +92,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
-
-// PLAN:
-
-// 1. once the user clicks the 'generate password' button, a dialogue pops up
-// 2. the dialogue asks for the following criteria:
-//       - select a length between 8 and 128 characters
-//       - (AT LEAST ONE) select whether or not to include: lowercase, uppercase, numeric, special characters
-// 3. after the user answers everything, password is generated in the box
