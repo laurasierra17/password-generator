@@ -52,7 +52,7 @@ function generatePassword() {
   var lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
   var uppercaseChars = lowercaseChars.toUpperCase();
   var digits = "0123456789";
-  var listSpecialChars = "!#%&^@()*$";
+  var listSpecialChars = "!#%&^@()*$><[]-{}`~:;+";
 
   // Generate a password which containes chars from every type selected by the user.
   // The condition of th eloop is the requested password length divided by the number of character types selected.
