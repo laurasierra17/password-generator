@@ -33,7 +33,6 @@ function getUserPasswordCriteria() {
   }
 
   // return desired password length and character type preferences
-  console.log(charTypes)
   return [passLength, charTypes];
 }
 
@@ -42,8 +41,7 @@ function generatePassword() {
   var passCriteriaList = getUserPasswordCriteria();
   var passLength = passCriteriaList[0]; // number
   var charTypes = passCriteriaList[1]; // object
-  // reset passCriteriaList to store chars that will go towards the new password
-  passCriteriaList = "";
+
 
   // count how many chars type the user selected
   var countTrue = 0;
@@ -56,32 +54,33 @@ function generatePassword() {
   var digits = "0123456789";
   var listSpecialChars = "!#%&^@()*$";
 
-  // Generate a password which includes a quantity of every character type selected by the user.
+  // Generate a password which containes chars from every type selected by the user.
   // This quantity is the requested password length divided by the number of character types selected.
+  var tempPassword = "";
   for (var i = 0; i < passLength / countTrue; i++) {
     if (charTypes.lowercase) {
-      var randomNumber = Math.floor(Math.random() * lowercaseChars.length);
-      passCriteriaList += lowercaseChars.substring(randomNumber, randomNumber + 1);
+      var randomIndex = Math.floor(Math.random() * lowercaseChars.length);
+      tempPassword += lowercaseChars.substring(randomIndex, randomIndex + 1);
     }
     if (charTypes.uppercase) {
-      var randomNumber = Math.floor(Math.random() * uppercaseChars.length);
-      passCriteriaList += uppercaseChars.substring(randomNumber, randomNumber + 1);
+      var randomIndex = Math.floor(Math.random() * uppercaseChars.length);
+      tempPassword += uppercaseChars.substring(randomIndex, randomIndex + 1);
     }
     if (charTypes.numeric) {
-      var randomNumber = Math.floor(Math.random() * digits.length);
-      passCriteriaList += digits.substring(randomNumber, randomNumber + 1);
+      var randomIndex = Math.floor(Math.random() * digits.length);
+      tempPassword += digits.substring(randomIndex, randomIndex + 1);
     }
     if (charTypes.specialChars) {
-      var randomNumber = Math.floor(Math.random() * listSpecialChars.length);
-      passCriteriaList += listSpecialChars.substring(randomNumber, randomNumber + 1);
+      var randomIndex = Math.floor(Math.random() * listSpecialChars.length);
+      tempPassword += listSpecialChars.substring(randomIndex, randomIndex + 1);
     }
   }
 
-  // Move around the previous generated password
+  // Permutate the order of the characters in the password
   var newPassword = "";
   for (var i = 0; i < passLength; i++) {
-    var randomNumber = Math.floor(Math.random() * passCriteriaList.length);
-    newPassword += passCriteriaList.substring(randomNumber, randomNumber + 1);
+    var randomIndex = Math.floor(Math.random() * tempPassword.length);
+    newPassword += tempPassword.substring(randomIndex, randomIndex + 1);
   }
   
   return newPassword;
@@ -98,3 +97,7 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+// make sure non-numeric characters aren't inputted
+// fix comments
+// apply a Set for permutation
