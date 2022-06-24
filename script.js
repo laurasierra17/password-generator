@@ -55,7 +55,7 @@ function generatePassword() {
   var listSpecialChars = "!#%&^@()*$";
 
   // Generate a password which containes chars from every type selected by the user.
-  // This quantity is the requested password length divided by the number of character types selected.
+  // The condition of th eloop is the requested password length divided by the number of character types selected.
   var tempPassword = "";
   for (var i = 0; i < passLength / countTrue; i++) {
     if (charTypes.lowercase) {
