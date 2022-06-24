@@ -3,14 +3,21 @@ var generateBtn = document.querySelector("#generate");
 
 // Prompts user to select length and character types for their new password
 function getUserPasswordCriteria() {
-  var passLength = prompt("Please select the length of your new password, between 8 and 128 characters");
+  // Ensure user specifies a length within the given bounds
+  var passLength = Number(prompt("Please select the length of your new password, between 8 and 128 characters"));
+  while (passLength == null || passLength < 8 || passLength >= 129) {
+    passLength = Number(prompt("Invalid length.\nPlease select the length of your new password, between 8 and 128 characters"));
+  }
+
+
+
   var hasLowercase = confirm("Would you like your password to include LOWERCASE characters?");
   var hasUppercase = confirm("Would you like your password to include UPPERCASE characters?");
   var hasNumeric = confirm("Would you like your password to include numbers?");
   var hasSpecialChars = confirm("Would you like your password to include special characters? Example: !-./:;<=>?@[\]^_`{|}~");
 
-  // Ensure user specifies a length within the given bounds
-
+  
+  
 }
 
 // Function to generate password based on user selections
