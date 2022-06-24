@@ -2,14 +2,20 @@
 var generateBtn = document.querySelector("#generate");
 
 function getCharacterTypes() {
-   // Save user's character types preferences
-   alert("Please select at least one character type!");
-   var hasLowercase = confirm("Would you like your password to include LOWERCASE characters?");
-   var hasUppercase = confirm("Would you like your password to include UPPERCASE characters?");
-   var hasNumeric = confirm("Would you like your password to include numbers?");
-   var hasSpecialChars = confirm("Would you like your password to include special characters? Example: !-./:;<=>?@[\]^_`{|}~");
+  // Save user's character types preferences
+  alert("Please select at least one character type!");
+  var hasLowercase = confirm("Would you like your password to include LOWERCASE characters?");
+  var hasUppercase = confirm("Would you like your password to include UPPERCASE characters?");
+  var hasNumeric = confirm("Would you like your password to include numbers?");
+  var hasSpecialChars = confirm("Would you like your password to include special characters? Example: !-./:;<=>?@[\]^_`{|}~");
 
-   return [hasLowercase, hasUppercase, hasNumeric, hasSpecialChars];
+
+  return {
+    lowercase: hasLowercase,
+    upprcase: hasUppercase,
+    numeric: hasNumeric,
+    specialChars: hasSpecialChars
+  }
   
 }
 
@@ -23,16 +29,27 @@ function getUserPasswordCriteria() {
 
   // A list storing the users response to character types preferences
   var charTypes = getCharacterTypes();
-  
   // Ensure at least one character type was selected
-  while (!charTypes.includes(true)) {
+  while (!Object.values(charTypes).includes(true)) {
     charTypes = getCharacterTypes()
   }
+
+  // return desired password length and character type preferences
+  console.log(charTypes)
+  return [passLength, charTypes];
 }
 
 // Function to generate password based on user selections
 function generatePassword() {
   var newPassword = getUserPasswordCriteria();
+  var passLength = newPassword[0]; // number
+  var charTypes = newPassword[1]; // object
+
+  var lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
+  var uppercaseChars = lowercaseChars.toUpperCase();
+  var digits = "0123456789";
+  var specialChars = ["!", "\"", "#", "$", "%", "&", "\'", "(", ")", "*", "+", ",", ""];
+
 
   return newPassword;
 }
