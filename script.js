@@ -21,7 +21,8 @@ function getCharacterTypes() {
 function getUserPasswordCriteria() {
   // Ensure user specifies a length within the given bounds
   var passLength = Number(prompt("Please select the length of your new password, between 8 and 128 characters"));
-  while (passLength == null || passLength < 8 || passLength >= 129) {
+  // Prompts user to try again if they submit an invalid character/length
+  while (passLength == null || passLength < 8 || passLength >= 129 || isNaN(passLength)) {
     passLength = Number(prompt("Invalid length.\nPlease select the length of your new password, between 8 and 128 characters"));
   }
 
