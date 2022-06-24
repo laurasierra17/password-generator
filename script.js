@@ -77,7 +77,13 @@ function generatePassword() {
     }
   }
 
-
+  // Move around the previous generated password
+  var newPassword = "";
+  for (var i = 0; i < passLength; i++) {
+    var randomNumber = Math.floor(Math.random() * passCriteriaList.length);
+    newPassword += passCriteriaList.substring(randomNumber, randomNumber + 1);
+  }
+  
   return newPassword;
 }
 
