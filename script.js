@@ -75,14 +75,17 @@ function generatePassword() {
       tempPassword += listSpecialChars.substring(randomIndex, randomIndex + 1);
     }
   }
-
+  
   // Permutate the order of the characters in the password
   var newPassword = "";
-  for (var i = 0; i < passLength; i++) {
+  var indexSet = new Set();
+  while (newPassword.length < passLength) {
     var randomIndex = Math.floor(Math.random() * tempPassword.length);
+    if (indexSet.has(randomIndex)) continue;
+    indexSet.add(randomIndex);
     newPassword += tempPassword.substring(randomIndex, randomIndex + 1);
   }
-  
+
   return newPassword;
 }
 
@@ -100,4 +103,3 @@ generateBtn.addEventListener("click", writePassword);
 
 // make sure non-numeric characters aren't inputted
 // fix comments
-// apply a Set for permutation
