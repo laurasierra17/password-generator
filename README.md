@@ -11,3 +11,11 @@ This application generates a password for a user given the following preferences
     5. Inclusion of numeric characters (yes/no)
 
 When the user first opens the application, a "Generate Password" button is rendered. Upon being clicked, the user is prompted to state their desired length between 8 and 128 characters. Subsequently, they are asked to select at least ONE character type to select from (lowercase characters, uppercase characters, special characters, and digits). Upon completion, their newly generated password appears on the screen, available to be copied.
+
+## Technologies Used
+
+HTML, CSS, JavaScript, and Git
+
+## Deployment link
+
+https://laurasierra17.github.io/password-generator/
