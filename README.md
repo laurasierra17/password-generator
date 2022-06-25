@@ -68,3 +68,7 @@ HTML, CSS, JavaScript, and Git
 ## Deployment link
 
 https://laurasierra17.github.io/password-generator/
+
+### User Information
+- [LinkedIn](https://www.linkedin.com/in/laurasierra2022)
+- [Portfolio](laura-sierra.com)
