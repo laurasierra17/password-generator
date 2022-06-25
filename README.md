@@ -71,4 +71,4 @@ https://laurasierra17.github.io/password-generator/
 
 ### User Information
 - [LinkedIn](https://www.linkedin.com/in/laurasierra2022)
-- [Portfolio](laura-sierra.com)
+- [Portfolio](http://www.laura-sierra.com)
