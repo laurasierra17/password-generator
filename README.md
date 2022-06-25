@@ -1,7 +1,7 @@
 # Password Generator
 
-![GIF](./assets/images/demo.gif)
-![Screenshot](./assets/images/screenshot.png)
+![GIF demo of the application](./assets/images/demo.gif)
+![Screenshot of the application's landing page](./assets/images/screenshot.png)
 
 ## Description
 This application generates a password for a user given the following preferences selected by the user:
