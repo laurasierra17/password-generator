@@ -1,6 +1,7 @@
 # Password Generator
 
 ![GIF demo of the application](./assets/images/demo.gif)
+
 ![Screenshot of the application's landing page](./assets/images/screenshot.png)
 
 ## Description
