@@ -17,6 +17,12 @@ Some implementations I would like to add are:
 1. Allowing instant copy of the generated password once the user clicks it.
 2. Remove the usage of prompts, alerts, and confirms to ask for user input and give feedback.
 
+## Code Snippets
+
+![Screenshot](./assets/images/screenshot.png)
+
+In the above code snippet, I'm prompting for the user's responses and validating their input.
+
 ## Technologies Used
 
 HTML, CSS, JavaScript, and Git
