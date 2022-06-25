@@ -20,41 +20,41 @@ Some implementations I would like to add are:
 ## Code Snippets
 
 ```
-    function getCharacterTypes() {
-        // Save user's character types preferences
-        alert("Please select at least one character type!");
-        var hasLowercase = confirm("Would you like your password to include LOWERCASE characters?");
-        var hasUppercase = confirm("Would you like your password to include UPPERCASE characters?");
-        var hasNumeric = confirm("Would you like your password to include numbers?");
-        var hasSpecialChars = confirm("Would you like your password to include special characters? Example: !-./:;<=>?@[\]^_`{|}~");
+function getCharacterTypes() {
+    // Save user's character types preferences
+    alert("Please select at least one character type!");
+    var hasLowercase = confirm("Would you like your password to include LOWERCASE characters?");
+    var hasUppercase = confirm("Would you like your password to include UPPERCASE characters?");
+    var hasNumeric = confirm("Would you like your password to include numbers?");
+    var hasSpecialChars = confirm("Would you like your password to include special characters? Example: !-./:;<=>?@[\]^_`{|}~");
 
-        return {
-            lowercase: hasLowercase,
-            uppercase: hasUppercase,
-            numeric: hasNumeric,
-            specialChars: hasSpecialChars
-        }
+    return {
+        lowercase: hasLowercase,
+        uppercase: hasUppercase,
+        numeric: hasNumeric,
+        specialChars: hasSpecialChars
+    }
+}
+
+// Prompts user to select length and character types for their new password
+function getUserPasswordCriteria() {
+    // Ensure user specifies a length within the given bounds
+    var passLength = Number(prompt("Please select the length of your new password, between 8 and 128 characters"));
+    // Prompts user to try again if they submit an invalid character/length
+    while (passLength == null || passLength < 8 || passLength >= 129 || isNaN(passLength)) {
+        passLength = Number(prompt("Invalid length.\nPlease select the length of your new password, between 8 and 128 characters"));
     }
 
-    // Prompts user to select length and character types for their new password
-    function getUserPasswordCriteria() {
-        // Ensure user specifies a length within the given bounds
-        var passLength = Number(prompt("Please select the length of your new password, between 8 and 128 characters"));
-        // Prompts user to try again if they submit an invalid character/length
-        while (passLength == null || passLength < 8 || passLength >= 129 || isNaN(passLength)) {
-            passLength = Number(prompt("Invalid length.\nPlease select the length of your new password, between 8 and 128 characters"));
-        }
-
-        // A list storing the users response to character types preferences
-        var charTypes = getCharacterTypes();
-        // Ensure at least one character type was selected
-        while (!Object.values(charTypes).includes(true)) {
-            charTypes = getCharacterTypes()
-        }
-
-        // return desired password length and character type preferences
-        return [passLength, charTypes];
+    // A list storing the users response to character types preferences
+    var charTypes = getCharacterTypes();
+    // Ensure at least one character type was selected
+    while (!Object.values(charTypes).includes(true)) {
+        charTypes = getCharacterTypes()
     }
+
+    // return desired password length and character type preferences
+    return [passLength, charTypes];
+}
 ```
 
 In the above code snippet, I'm prompting for the user's responses and validating their input.
